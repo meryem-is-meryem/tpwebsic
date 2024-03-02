@@ -11,12 +11,13 @@ export const HoverEffect = ({
 }: {
   items: {
     title: string;
-    description: string;
+    image: string;
     link: string;
   }[];
   className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [texte, setTexte] = useState(0); // Utilisation du hook personnalisé
 
   return (
     <div
@@ -30,8 +31,14 @@ export const HoverEffect = ({
           //   href={item?.link}
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          onMouseEnter={() => {
+            setHoveredIndex(idx);
+            setTexte(1);
+          }}
+          onMouseLeave={() => {
+            setHoveredIndex(null);
+            setTexte(0);
+          }}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -51,8 +58,20 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+            <CardTitle className={hoveredIndex === idx ? "text-white" : ""}>
+              {" "}
+              {item.title}
+            </CardTitle>
+            <CardBody>
+              <img src={item.image} />
+              <div
+                className={
+                  hoveredIndex === idx ? "text-white mt-2" : "text-black mt-2"
+                }
+              >
+                PRICE{" "}
+              </div>
+            </CardBody>
           </Card>
         </div>
       ))}
@@ -75,7 +94,7 @@ export const Card = ({
       )}
     >
       <div className="relative z-50">
-        <div className="p-4">{children}</div>
+        <div className="p-4 ">{children} </div>
       </div>
     </div>
   );
@@ -93,7 +112,7 @@ export const CardTitle = ({
     </h4>
   );
 };
-export const CardDescription = ({
+export const CardBody = ({
   className,
   children,
 }: {
@@ -101,13 +120,13 @@ export const CardDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <p
+    <div
       className={cn(
         "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
         className
       )}
     >
       {children}
-    </p>
+    </div>
   );
 };

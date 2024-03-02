@@ -1,38 +1,52 @@
 export const projects = [
   {
-    title: "Stripe",
-    description:
-      "A technology company that builds economic infrastructure for the internet.",
-    link: "https://stripe.com",
+    title: "COCO CHANEL",
+    image: "/1.jpg",
+    link: "https://1.com",
   },
   {
-    title: "Netflix",
-    description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+    title: "AXE",
+    image: "/2.jpg",
+    link: "https://2.com",
+  },
+  {
+    title: "NIVEUA MEN",
+    image: "/3.jpg",
+    link: "https://3.com",
+  },
+  {
+    title: "ANGELINA",
+    image: "/kader.jpg",
+    link: "https://4.com",
+  },
+  {
+    title: "INVECTUS",
+    image: "/5.jpg",
+    link: "https://5.com",
+  },
+  {
+    title: "Dior sauvage",
+    image: "/ENSA-BANNER.png",
     link: "https://netflix.com",
   },
   {
-    title: "Google",
-    description:
-      "A multinational technology company that specializes in Internet-related services and products.",
+    title: "mascara",
+    image: "/lemsa.png",
     link: "https://google.com",
   },
   {
-    title: "Meta",
-    description:
-      "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
+    title: "beauty",
+    image: "/LEMSA.png",
     link: "https://meta.com",
   },
   {
-    title: "Amazon",
-    description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+    title: "Chanel",
+    image: "/e-shop.png",
     link: "https://amazon.com",
   },
   {
-    title: "Microsoft",
-    description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+    title: "lussie",
+    image: " /e-shop.png",
     link: "https://microsoft.com",
   },
 ];
