@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { cn } from "../utils/cn";
 import React from "react";
+import BadgePrice from "./BadgePrice";
 
 export const HoverEffect = ({
   items,
@@ -13,6 +14,7 @@ export const HoverEffect = ({
     title: string;
     image: string;
     link: string;
+    price: string;
   }[];
   className?: string;
 }) => {
@@ -22,9 +24,10 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-2 md:grid-cols-2  lg:grid-cols-3  py-10",
+        "grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4  py-10 w-full",
         className
       )}
+      style={{ border: "solid 1px red" }}
     >
       {items.map((item, idx) => (
         <div
@@ -40,6 +43,10 @@ export const HoverEffect = ({
             setTexte(0);
           }}
         >
+          {/* <div className="flex justify-end  pr-2 ">
+            <Badge.Ribbon text={item.price}></Badge.Ribbon>
+          </div> */}
+          <BadgePrice price={item.price} />
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
@@ -57,20 +64,32 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
+
           <Card>
-            <CardTitle className={hoveredIndex === idx ? "text-white" : ""}>
-              {" "}
-              {item.title}
-            </CardTitle>
-            <CardBody>
-              <img src={item.image} />
-              <div
-                className={
-                  hoveredIndex === idx ? "text-white mt-2" : "text-black mt-2"
-                }
-              >
-                PRICE{" "}
+            {(idx === 0 || idx === 4 || idx === 6) && (
+              <div className="absolute transform -rotate-45 bg-blue-600 text-center text-white font-semibold py-1 left-[-60px] top-[20px] w-[170px]">
+                Promotion
               </div>
+            )}
+
+            <CardTitle className={hoveredIndex === idx ? "text-white" : ""}>
+              {item.title}
+              {idx}
+            </CardTitle>
+
+            <CardBody className="flex flex-col justify-between">
+              <div className="relative" style={{ aspectRatio: "2/3" }}>
+                <img
+                  src={item.image}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  alt="Product"
+                />
+              </div>
+              <div
+                className={`text-${hoveredIndex === idx ? "white" : "black"} ${
+                  idx != 0 ? " mt-4" : ""
+                }`}
+              ></div>
             </CardBody>
           </Card>
         </div>
