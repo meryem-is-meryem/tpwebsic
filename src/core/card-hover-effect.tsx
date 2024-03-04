@@ -1,10 +1,11 @@
 // import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 // import Link from "next/link";
-import { useState } from "react";
+import { Children, useState } from "react";
 import { cn } from "../utils/cn";
 import React from "react";
 import BadgePrice from "./BadgePrice";
+import ModalChakra from "./ModalChakra";
 
 export const HoverEffect = ({
   items,
@@ -20,7 +21,13 @@ export const HoverEffect = ({
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [texte, setTexte] = useState(0); // Utilisation du hook personnalisé
-
+  const [isopen, setIsopen] = useState(false);
+  const handleClose = () => {
+    setIsopen(false);
+  };
+  const handleOpen = () => {
+    setIsopen(true);
+  };
   return (
     <div
       className={cn(
@@ -87,9 +94,21 @@ export const HoverEffect = ({
               </div>
               <div
                 className={`text-${hoveredIndex === idx ? "white" : "black"} ${
-                  idx != 0 ? " mt-4" : ""
+                  idx != 0 ? " pt-8" : "pt-2"
                 }`}
-              ></div>
+              >
+                <ModalChakra
+                  isOpen={isopen}
+                  onClose={handleClose}
+                  onOpen={handleOpen}
+                  onEsc={handleClose}
+                  onOverlayClick={handleClose}
+                  title="Détail du produit"
+                  buttonName="Détails"
+                >
+                  je suis le super details
+                </ModalChakra>
+              </div>
             </CardBody>
           </Card>
         </div>
