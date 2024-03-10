@@ -85,7 +85,7 @@ export default function NavBar() {
               variant={"link"}
               href={"#"}
             >
-              Sign In
+              <Link to="/Login"> Sign In</Link>{" "}
             </Button>
             <Button
               as={"a"}

@@ -22,7 +22,7 @@ export default function About() {
           width: "100%",
         }}
       > */}
-      <div className="rounded-2xl h-full w-full p-4 overflow-hidden shadow-lg border border-solide dark:border-white/[0.2] group-hover:border-slate-700 relative z-20">
+      {/* <div className="rounded-2xl h-full w-full p-4 overflow-hidden shadow-lg border border-solide dark:border-white/[0.2] group-hover:border-slate-700 relative z-20">
         <div className="relative z-50">
           <div className="p-4 ">
             {" "}
@@ -31,7 +31,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* </Space> */}
+      </Space> */}
+      <div className="px-8  py-8 "></div>
     </>
   );
 }
